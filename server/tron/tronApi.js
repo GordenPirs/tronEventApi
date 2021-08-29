@@ -21,10 +21,7 @@ class TronApi {
     }
 
     static async getContract({number, address}) {
-        let contracts = [];
-        contracts = address.split(",");
-        console.log(contracts);
-        return Contractevent.find({blockNumber: Number(number), contractAddress: {$in: contracts}}, {fields: {'_id': 0}}).map(tx=> {
+        return Contractevent.find({blockNumber: Number(number), contractAddress: {$in: address}}, {fields: {'_id': 0}}).map(tx=> {
             return {
                 contract: tx.contractAddress,
                 txid: tx.transactionId,
