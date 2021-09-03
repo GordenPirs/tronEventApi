@@ -11,7 +11,7 @@ const tronWeb = new TronWeb({
     fullNode: 'http://5.45.78.116:8090',
     solidityNode: 'http://5.45.78.116:8091',
     eventServer: 'https://api.trongrid.io',
-    privateKey: 'F0A8AF0B5A486B9EC76A199E767FD7157240D95D60620FDC8A9C4D2672B2B2F4'
+    //privateKey: 'F0A8AF0B5A486B9EC76A199E767FD7157240D95D60620FDC8A9C4D2672B2B2F4'
 });
 
 
@@ -49,7 +49,7 @@ class TronApi {
     static async getBalance({contractAddress, address}) {
         console.log(contractAddress, address);
         const { abi } = await tronWeb.trx.getContract(contractAddress);
-
+        tronWeb.setAddress(address)
         const contract = tronWeb.contract(abi.entrys, contractAddress);
         const balance = await contract.methods.balanceOf(address).call();
         return tronWeb.toBigNumber(balance).toNumber();
