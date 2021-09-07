@@ -35,7 +35,7 @@ res {
 http://localhost/contracts
 get params: {
     number: BlockNumber,
-    address: ContractAddress,ContractAddress
+    address: [ContractAddress,ContractAddress,...]
 }
 
 res {
